@@ -1,25 +1,27 @@
 name: Run Tests on Push
 
 on:
-	push:
-		branches:
-			-feature-branch #main
+  push:
+    branches:
+      - feature-branch  # Remove the `#main` comment or fix it
+
 jobs:
-	tests:
-		runs-on: windows-latests
-		steps:
-			-name: Checkout code
-			 uses: actions/checkout@v3
+  tests:
+    runs-on: windows-latest  # Corrected the typo in 'windows-latests'
 
-			-name: Set up Node.js
-			uses: actions/setup-node@v3
-			 with:
-				node-version: '16'
+    steps:
+      - name: Checkout code  # Corrected indentation
+        uses: actions/checkout@v3
 
-			-name: Install dependencies
-			 run: |
-				npm install
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
 
-			-name: Run tests
-			 run: |
-				npm tests
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: Run tests
+        run: |
+          npm test  # Corrected `npm tests` to `npm test`
